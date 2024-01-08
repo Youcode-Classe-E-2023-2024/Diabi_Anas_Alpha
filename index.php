@@ -26,12 +26,11 @@ require_once 'includes/login_view.inc.php';
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+            <?php if (isset($_SESSION["user_id"])) { ?>
+            <button class="btn btn-success"><a href="includes\products_view.php" class="text-white">Products</a></button>
+    <button class="btn btn-success"><a href="../index.php" class="text-white">Home</a></button>
+    <?php } ?>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
@@ -125,8 +124,8 @@ if (!isset($_SESSION["user_id"])) { ?>
    
 <div class="container mt-3">
     <?php if (isset($_SESSION["user_id"])) { ?>
-        <button class="btn btn-info"><a href="users.php" class="text-white">Users</a></button>
-        <button class="btn btn-success"><a href="products.php" class="text-white">Products</a></button>
+        <button class="btn btn-info"><a href="includes\users_view.php" class="text-white">Users</a></button>
+        <button class="btn btn-success"><a href="includes\products_view.php" class="text-white">Products</a></button>
     <?php } ?>
 </div>
 

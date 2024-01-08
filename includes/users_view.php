@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +7,16 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
-
 <body>
     <div class="container mt-5">
         <table class="table table-bordered">
             <thead class="thead-dark">
                 <tr>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Phone</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="users">
@@ -26,14 +27,17 @@
     <script>
         const table = document.getElementById("users");
         let rows = "";
-        fetch("https://jsonplaceholder.typicode.com/posts")
+        fetch("https://jsonplaceholder.typicode.com/users")
             .then(response => response.json())
             .then(data => {
                 data.forEach((val, key) => {
                     rows += `
                         <tr id=${key}>
-                            <td class="px-6 py-4 whitespace-nowrap">${val.title}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">
+                            <td>${val.name}</td>
+                            <td>${val.email}</td>
+                            <td>${val.username}</td>
+                            <td>${val.phone}</td>
+                            <td>
                                 <button class="btn btn-primary" onclick="handleEdit(${key})">Edit</button>
                                 <button class="btn btn-danger ml-2" onclick="handleDelete(${key})">Delete</button>
                             </td>
@@ -45,21 +49,22 @@
 
         function handleDelete(id) {
             document.getElementById(id).style.display = "none";
-            fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
                 method: "DELETE"
             })
             .then(response => {
                 if (response.ok) {
-                    alert("Post removed successfully");
+                    alert("User removed successfully");
                 }
             });
         }
     </script>
+        <button class="btn btn-success"><a href="includes\products_view.php" class="text-white">Products</a></button>
+        <button class="btn btn-success"><a href="../index.php" class="text-white">Home</a></button>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
-
 </html>
