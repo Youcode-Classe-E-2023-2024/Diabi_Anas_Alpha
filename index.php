@@ -122,6 +122,17 @@ if (!isset($_SESSION["user_id"])) { ?>
             </div>
         </div>
     </div>
+   
+<div class="container mt-3">
+    <?php if (isset($_SESSION["user_id"])) { ?>
+        <button class="btn btn-info"><a href="users.php" class="text-white">Users</a></button>
+        <button class="btn btn-success"><a href="products.php" class="text-white">Products</a></button>
+    <?php } ?>
+</div>
+
+
+
+    <script src="script.js"></script>
 
     <!-- Bootstrap JS and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
